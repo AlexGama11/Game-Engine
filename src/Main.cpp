@@ -14,7 +14,11 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 	
-	SDL_CreateWindow("Alex's Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, 0);
+	window = SDL_CreateWindow("Alex's Game Engine",
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		1280, 720,
+		0);
 
 	if (!window)
 	{
@@ -28,15 +32,18 @@ int main(int argc, char* argv[])
 		std::cout << "Renderer could not be created!" << std::endl;
 	}
 
+	// Main Game Loop
 	while (isGameRunning)
 
 	{
+		//Clears the Screen
 		SDL_RenderClear(renderer);
 
+		//Swaps the Frame buffer
 		SDL_RenderPresent(renderer);
 	}
 
-
+	//Shutdown Game
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit;
