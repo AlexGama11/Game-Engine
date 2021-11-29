@@ -2,6 +2,8 @@
 
 Making a Game Engine for class, gonna make a game with it!
 
+In order to use this, delete the sln folder and click on generate.bat to make your solution. It is set to vs2022, change the value according to your needs.
+
 ## What's in this project?
 
 ← `README.md`: That's this file you're reading.
