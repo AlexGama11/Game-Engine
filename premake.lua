@@ -1,4 +1,4 @@
-workspace "Engine"
+worworkspace "Engine"
 	location ".\\build\\"
 
 	targetdir "%{wks.location}\\bin\\%{cfg.buildcfg}\\"
@@ -19,7 +19,7 @@ workspace "Engine"
 	}
 
 	includedirs {
-		".\\Game Engine\\",
+		".\\src\\",
 	}
 
 	platforms {
@@ -44,17 +44,17 @@ workspace "Engine"
 		symbols "on"
 
 	project "Game Engine"
-		targetname "Game Engine"
-		language "c++"
-		kind "empty"
+		targetname "Game Engine
+		kind "consoleapp"
 		warnings "off"
 		
 		files {
 			".\\Game Engine\\**",
-			".\\Devlib\\**",
 		}
 
 		includedirs {
 			".\\Game Engine\\",
-			".\\Devlib\\**",
+            ".\\Devlib\include\",
+            ".\\Devlib\bin\",
+            ".\\Devlib\lib\",
 		}
