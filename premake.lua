@@ -1,4 +1,4 @@
-worworkspace "Engine"
+workspace "Engine"
 	location ".\\build\\"
 
 	targetdir "%{wks.location}\\bin\\%{cfg.buildcfg}\\"
@@ -18,8 +18,13 @@ worworkspace "Engine"
 		"/std:c++20",
 	}
 
+	syslibdirs {
+		".\\deps\\SDL2\\lib\\",
+	}
+
 	includedirs {
 		".\\src\\",
+		".\\deps\\SDL2\\include\\",
 	}
 
 	platforms {
@@ -44,17 +49,20 @@ worworkspace "Engine"
 		symbols "on"
 
 	project "Game Engine"
-		targetname "Game Engine
+		targetname "game_engine"
+		language "c++"
 		kind "consoleapp"
 		warnings "off"
 		
+		links {
+			"SDL2",
+			"SDL2main",
+		}
+		
 		files {
-			".\\Game Engine\\**",
+			".\\src\\**",
 		}
 
 		includedirs {
-			".\\Game Engine\\",
-            ".\\Devlib\include\",
-            ".\\Devlib\bin\",
-            ".\\Devlib\lib\",
+			".\\src\\",
 		}
