@@ -1,5 +1,5 @@
 workspace "Engine"
-	location ".\\build\\"
+	location ".\\sln\\"
 
 	targetdir "%{wks.location}\\bin\\%{cfg.buildcfg}\\"
 	objdir "%{wks.location}\\obj\\%{cfg.buildcfg}\\%{prj.name}\\"
@@ -19,12 +19,12 @@ workspace "Engine"
 	}
 
 	syslibdirs {
-		".\\deps\\SDL2\\lib\\",
+		".\\devlib\\lib\\",
 	}
 
 	includedirs {
 		".\\src\\",
-		".\\deps\\SDL2\\include\\",
+		".\\devlib\\include\\",
 	}
 
 	platforms {
