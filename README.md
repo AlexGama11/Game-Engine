@@ -2,7 +2,7 @@
 
 Making a Game Engine for class, gonna make a game with it!
 
-In order to use this, delete the sln folder and click on generate.bat to make your solution. It is set to vs2022, change the value according to your needs.
+In order to use the code, delete the sln folder and click on generate.bat to make your solution. It is set to vs2022, change the value according to your needs.
 
 ## What's in this project?
 
@@ -10,7 +10,7 @@ In order to use this, delete the sln folder and click on generate.bat to make yo
 
 ← `Main.cpp`: This is the main file with the main menu.
 
-← `Screen.cpp`: This is the cpp ill be using later for screen stuff.
+← `Screen.cpp`: This is the cpp i'll be using later for screen stuff.
 
 ← `Screen.h`: This is the header file for screen stuff.
 
