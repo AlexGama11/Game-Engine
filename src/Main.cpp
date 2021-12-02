@@ -6,27 +6,26 @@ bool isGameRunning = true;
 
 int main(int argc, char* argv[])
 {
+    // Variable to call from screen class
+	Screen Main;
+	
 	// initializes the game
-	Screen Init;
-	Init.Initialize();
+	Main.Initialize();
 	
 	
 	// makes the screen
-	Screen Presenter;
-	Presenter.Present();
+	Main.Present();
 
 	// Main Game Loop
 	while (isGameRunning)
 
 	{
 		//refreshes the screen
-		Screen Refresher;
-		Refresher.Refresh();
+		Main.Refresh();
 	}
 
 
 	// Shuts down the game
-	Screen Quitting;
-	Quitting.Shutdown();
+	Main.Shutdown();
 	return 0;
 }
