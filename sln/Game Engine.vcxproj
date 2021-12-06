@@ -99,14 +99,14 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Screen.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Vector.h" />
+    <ClInclude Include="..\src\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
-    <ClCompile Include="Input.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
