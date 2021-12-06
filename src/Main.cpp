@@ -23,20 +23,20 @@ int main(int argc, char* argv[])
 		//closes window
 		isGameRunning = !(Input::Instance()->IsWindowClosed());
 
-		//gets mouse coords
-	/*	auto mousePosition = Input::Instance()->GetMousePosition();
+	//	gets mouse coords
+		/*auto mousePosition = Input::Instance()->GetMousePosition();
 
-	    std::cout << "Mouse Position: " << mousePosition.x << ", " << mousePosition.y << std::endl;
+	    std::cout << "Mouse Position: " << mousePosition.x << ", " << mousePosition.y << std::endl;*/
 
-		//gets mouse movement
-		auto mouseMotion = Input::Instance()->GetMouseMotion();
+		/*gets mouse movement*/
+		/*auto mouseMotion = Input::Instance()->GetMouseMotion();
 
 	    std::cout << "Mouse Motion: " << mouseMotion.x << ", " << mouseMotion.y << std::endl;*/
 
-		//gets mouse wheel movement
-		//auto mouseWheel = Input::Instance()->GetMouseWheel();
+	//	gets mouse wheel movement
+		/*auto mouseWheel = Input::Instance()->GetMouseWheel();
 
-		//std::cout << "Mouse Wheel: " << mouseWheel << std::endl;
+		std::cout << "Mouse Wheel: " << mouseWheel << std::endl;*/
 
 		//checks if space is clicked
 		if (Input::Instance()->IsKeyPressed(HM_KEY_SPACE) == true)
