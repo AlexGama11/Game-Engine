@@ -44,6 +44,9 @@ int main(int argc, char* argv[])
 			std::cout << "Spacebar" << std::endl;
 		}
 
+		//prints the key thats pressed. Works good with printable keys only.
+		std::cout << Input::Instance()->GetKey() << std::endl;
+
 		//checks if left mouse is clicked
 		if (Input::Instance()->IsMouseClicked(HM_MOUSE_LEFT) == true)
 		{
