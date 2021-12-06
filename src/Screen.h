@@ -1,10 +1,18 @@
 #pragma once
+#include <SDL.h>
+
 class Screen
 {
 
 
 public:
 
+	//constructor
+	Screen();
+	//destructor
+	~Screen();
+
+	//functions
 	bool Initialize();
 	void Refresh();
 	void Present();
@@ -13,7 +21,9 @@ public:
 
 private:
 
-
+	//pointers
+	SDL_Window* m_window;
+	SDL_Renderer* m_renderer;
 
 };
 

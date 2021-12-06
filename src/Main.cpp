@@ -1,32 +1,26 @@
 #include <iostream>
-#include <SDL.h>
 #include "Screen.h"
 
 bool isGameRunning = true;
 
 int main(int argc, char* argv[])
 {
-	// initializes the game
-	Screen Init;
-	Init.Initialize();
-	
-	
-	// makes the screen
-	Screen Presenter;
-	Presenter.Present();
+	// initializes the screen
+	Screen screen;
+	screen.Initialize();
 
 	// Main Game Loop
 	while (isGameRunning)
 
 	{
 		//refreshes the screen
-		Screen Refresher;
-		Refresher.Refresh();
+		screen.Refresh();
+
+		// presents the screen
+		screen.Present();
 	}
 
-
 	// Shuts down the game
-	Screen Quitting;
-	Quitting.Shutdown();
+	screen.Shutdown();
 	return 0;
 }

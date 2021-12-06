@@ -1,9 +1,19 @@
 #include <iostream>
-#include <SDL.h>
 #include "Screen.h"
 
-SDL_Window* window = nullptr;
-SDL_Renderer* renderer = nullptr;
+//constructor
+Screen::Screen()
+{
+	//pointers
+    m_window = nullptr;
+    m_renderer = nullptr;
+}
+
+//destructor
+Screen::~Screen()
+{
+
+}
 
 bool Screen::Initialize()
 {
@@ -15,6 +25,28 @@ bool Screen::Initialize()
 		return -1;
 	}
 
+	//makes window
+	m_window = SDL_CreateWindow("Alex's Game Engine",
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		1280, 720,
+		0);
+
+	//if no window
+	if (!m_window)
+	{
+		std::cout << "Game Window could not be created!" << std::endl;
+	}
+
+	// makes renderer
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+
+	//if no renderer
+	if (!m_window)
+	{
+		std::cout << "Renderer could not be created!" << std::endl;
+	}
+
     return false;
 }
 
@@ -22,45 +54,21 @@ void Screen::Refresh()
 {
 
 	//Clears the Screen
-	SDL_RenderClear(renderer);
-
-	//Swaps the Frame buffer
-	SDL_RenderPresent(renderer);
+	SDL_RenderClear(m_renderer);
 
 }
 
 void Screen::Present()
 {
-
-	//makes window
-	window = SDL_CreateWindow("Alex's Game Engine",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		1280, 720,
-		0);
-
-	//if no window
-	if (!window)
-	{
-		std::cout << "Game Window could not be created!" << std::endl;
-	}
-
-	// makes renderer
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-	//if no renderer
-	if (!renderer)
-	{
-		std::cout << "Renderer could not be created!" << std::endl;
-	}
-
+	//Swaps the Frame buffer
+	SDL_RenderPresent(m_renderer);
 }
 
 void Screen::Shutdown()
 {
 	//shutdown game
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(m_renderer);
+	SDL_DestroyWindow(m_window);
 	SDL_Quit;
 
 }
