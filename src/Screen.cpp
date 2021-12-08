@@ -37,7 +37,6 @@ bool Screen::Initialize()
 	{
 		std::cout << "Game Window could not be created!" << std::endl;
 	}
-
 	// makes renderer
 	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -49,6 +48,8 @@ bool Screen::Initialize()
 
     return false;
 }
+
+
 
 void Screen::Refresh()
 {

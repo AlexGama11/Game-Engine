@@ -1,0 +1,33 @@
+Some C++ commands to remind myself of.
+
+
+
+//	gets mouse coords
+		auto mousePosition = Input::Instance()->GetMousePosition();
+
+	    std::cout << "Mouse Position: " << mousePosition.x << ", " << mousePosition.y << std::endl;
+
+		/*gets mouse movement*/
+		auto mouseMotion = Input::Instance()->GetMouseMotion();
+
+	    std::cout << "Mouse Motion: " << mouseMotion.x << ", " << mouseMotion.y << std::endl;
+
+	//	gets mouse wheel movement
+		auto mouseWheel = Input::Instance()->GetMouseWheel();
+
+		std::cout << "Mouse Wheel: " << mouseWheel << std::endl;
+
+		//checks if space is clicked
+		if (Input::Instance()->IsKeyPressed(HM_KEY_SPACE) == true)
+		{
+			std::cout << "Spacebar" << std::endl;
+		}
+
+		//prints the key thats pressed. Works good with printable keys only.
+		std::cout << Input::Instance()->GetKey() << std::endl;
+
+		//checks if left mouse is clicked
+		if (Input::Instance()->IsMouseClicked(HM_MOUSE_LEFT) == true)
+		{
+			std::cout << "Left Mouse Click" << std::endl;
+		}
