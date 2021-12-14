@@ -57,6 +57,8 @@ workspace "Engine"
 		links {
 			"SDL2",
 			"SDL2main",
+			"SDL2_image",
+			"SDL2_mixer",
 		}
 		
 		files {

@@ -15,6 +15,11 @@ Screen::~Screen()
 
 }
 
+SDL_Renderer* Screen::GetRenderer()
+{
+	return m_renderer;
+}
+
 bool Screen::Initialize()
 {
 

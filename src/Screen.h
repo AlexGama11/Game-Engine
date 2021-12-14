@@ -12,6 +12,8 @@ public:
 	//destructor
 	~Screen();
 
+	SDL_Renderer* GetRenderer();
+
 	//functions
 	bool Initialize();
 	void Refresh();
