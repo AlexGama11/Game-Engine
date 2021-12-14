@@ -17,6 +17,9 @@ int main(int argc, char* argv[])
 	Image swords(1280, 720);
 	swords.Load("../assets/UBW.jpg", screen);
 
+	Image fuyuki(1280, 720);
+	fuyuki.Load("../assets/fuyuki.jpg", screen);
+
 	Image shirou(100, 100);
 	shirou.Load("../assets/Shirou.png", screen);
 
@@ -95,12 +98,14 @@ int main(int argc, char* argv[])
 
 		if (ubw == true)
 		{
+			fuyuki.Unload();
 			swords.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
 			screen.Present();
 		}
 
 		/*swords.Render(screen, 0, 0);*/
+		fuyuki.Render(screen, 0, 0);
 		shirou.Render(screen, x, y);
 
 		// presents the screen
