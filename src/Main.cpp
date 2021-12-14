@@ -41,6 +41,7 @@ int main(int argc, char* argv[])
 		if (Input::Instance()->IsKeyPressed(HM_KEY_ESCAPE) == true)
 		{
 			swords.Unload();
+			fuyuki.Unload();
 			shirou.Unload();
 			screen.Shutdown();
 			isGameRunning = false;
@@ -96,19 +97,26 @@ int main(int argc, char* argv[])
             ubw = true;
 		}
 
-		if (ubw == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
 		{
-			fuyuki.Unload();
-			swords.Render(screen, 0, 0);
-			shirou.Render(screen, x, y);
-			screen.Present();
+			ubw = false;
 		}
 
-		/*swords.Render(screen, 0, 0);*/
-		fuyuki.Render(screen, 0, 0);
-		shirou.Render(screen, x, y);
 
-		// presents the screen
+		if (ubw == true)
+		{
+			//new bg
+			swords.Render(screen, 0, 0);
+			shirou.Render(screen, x, y);
+		}
+		else if (ubw == false)
+		{
+			//base bg
+			fuyuki.Render(screen, 0, 0);
+			shirou.Render(screen, x, y);
+
+			// presents the screen
+		}
 		screen.Present();
 	}
 
