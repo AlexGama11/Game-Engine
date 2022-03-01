@@ -2,11 +2,14 @@
 #include "Input.h"
 #include "Screen.h"
 #include "Image.h"
+#include "Music.h" 
+#include "Text.h"
 
 bool isGameRunning = true;
 int x = 640;
 int y = 360;
 bool ubw = false;
+int keypress = 0;
 
 int main(int argc, char* argv[])
 {
@@ -22,6 +25,18 @@ int main(int argc, char* argv[])
 
 	Image shirou(100, 100);
 	shirou.Load("../assets/Shirou.png", screen);
+
+	Music ubwchant;
+	ubwchant.Initialize();
+	ubwchant.Load("../audio/ubw.mp3");
+	ubwchant.SetVolume(0.5f);
+
+	Text chant;
+	chant.Initialize();
+	chant.Load("../fonts/SEGA_Skip-B.ttf");
+	chant.SetSize(200, 50);
+	chant.SetColor(213, 217, 153);
+	chant.SetString("Press U to beat the king of heroes!");
 
 	// Main Game Loop
 	while (isGameRunning)
@@ -43,7 +58,10 @@ int main(int argc, char* argv[])
 			swords.Unload();
 			fuyuki.Unload();
 			shirou.Unload();
-			screen.Shutdown();
+			ubwchant.Unload();
+			chant.Unload();
+			//screen.Shutdown();
+			//music.Shutdown();
 			isGameRunning = false;
 		}
 
@@ -94,12 +112,16 @@ int main(int argc, char* argv[])
 		
 		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
 		{
-            ubw = true;
+			ubw = true;
+			//music, inside parenthese is for a loop
+			ubwchant.Play(/*Music::Loop:Ongoing*/);
+			SDL_Delay(5000);
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_I) == true)
 		{
-			ubw = false;
+				ubw = false;
+				ubwchant.Stop();
 		}
 
 
@@ -112,6 +134,7 @@ int main(int argc, char* argv[])
 		else if (ubw == false)
 		{
 			//base bg
+			chant.Render(screen, 10, 10);
 			fuyuki.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
 
@@ -122,5 +145,7 @@ int main(int argc, char* argv[])
 
 	// Shuts down the game
 	screen.Shutdown();
+	ubwchant.Shutdown();
+	chant.Shutdown();
 	return 0;
 }
