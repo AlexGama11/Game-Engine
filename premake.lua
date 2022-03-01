@@ -59,6 +59,7 @@ workspace "Engine"
 			"SDL2main",
 			"SDL2_image",
 			"SDL2_mixer",
+			"SDL2_TTF",
 		}
 		
 		files {

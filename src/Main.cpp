@@ -28,15 +28,22 @@ int main(int argc, char* argv[])
 
 	Music ubwchant;
 	ubwchant.Initialize();
-	ubwchant.Load("../audio/ubw.mp3");
+	ubwchant.Load("../audio/shirouchant.mp3");
 	ubwchant.SetVolume(0.5f);
 
 	Text chant;
 	chant.Initialize();
 	chant.Load("../fonts/SEGA_Skip-B.ttf");
-	chant.SetSize(200, 50);
+	chant.SetSize(800, 50);
 	chant.SetColor(213, 217, 153);
-	chant.SetString("Press U to beat the king of heroes!");
+	chant.SetString("Press WASD to move, and U to be the bone of your sword!");
+
+	Text KoH;
+	KoH.Initialize();
+	KoH.Load("../fonts/SEGA_Skip-B.ttf");
+	KoH.SetSize(1280, 100);
+	KoH.SetColor(213, 217, 153);
+	KoH.SetString("Here I come, King of Heroes. Do you have enough weapons in stock?");
 
 	// Main Game Loop
 	while (isGameRunning)
@@ -60,32 +67,30 @@ int main(int argc, char* argv[])
 			shirou.Unload();
 			ubwchant.Unload();
 			chant.Unload();
-			//screen.Shutdown();
-			//music.Shutdown();
 			isGameRunning = false;
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_D) == true)
 		{
-			x += 1;
+			x += 10;
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_A) == true)
 		{
-			x -= 1;
+			x -= 10;
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
 		{
-			y -= 1;
+			y -= 10;
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
 		{
-			y += 1;
+			y += 10;
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_I) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
 		{
 			std::cout << "Image position is:" << x << ", " << y << std::endl;
 		}
@@ -115,7 +120,7 @@ int main(int argc, char* argv[])
 			ubw = true;
 			//music, inside parenthese is for a loop
 			ubwchant.Play(/*Music::Loop:Ongoing*/);
-			SDL_Delay(5000);
+			SDL_Delay(27000);
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_I) == true)
@@ -130,13 +135,14 @@ int main(int argc, char* argv[])
 			//new bg
 			swords.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
+			KoH.Render(screen, 10, 10);
 		}
 		else if (ubw == false)
 		{
 			//base bg
-			chant.Render(screen, 10, 10);
 			fuyuki.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
+			chant.Render(screen, 10, 10);
 
 			// presents the screen
 		}
