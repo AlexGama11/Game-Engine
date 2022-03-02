@@ -18,13 +18,16 @@ int main(int argc, char* argv[])
 	screen.Initialize();
 
 	Image swords(1280, 720);
-	swords.Load("../assets/UBW.jpg", screen);
+	swords.Load("../assets/UBW.png", screen);
 
-	Image fuyuki(1280, 720);
-	fuyuki.Load("../assets/fuyuki.jpg", screen);
+	Image mainmenu(1280, 720);
+	mainmenu.Load("../assets/BGMenu.png", screen);
 
-	Image shirou(100, 100);
-	shirou.Load("../assets/Shirou.png", screen);
+	Image shirou(256, 256);
+	shirou.Load("../assets/Shirou.gif", screen);
+
+	Image ubwshirou(256, 256);
+	ubwshirou.Load("../assets/ShirouUBW.gif", screen);
 
 	Music ubwchant;
 	ubwchant.Initialize();
@@ -35,14 +38,14 @@ int main(int argc, char* argv[])
 	chant.Initialize();
 	chant.Load("../fonts/SEGA_Skip-B.ttf");
 	chant.SetSize(800, 50);
-	chant.SetColor(213, 217, 153);
+	chant.SetColor(144, 115, 182);
 	chant.SetString("Press WASD to move, and U to be the bone of your sword!");
 
 	Text KoH;
 	KoH.Initialize();
 	KoH.Load("../fonts/SEGA_Skip-B.ttf");
-	KoH.SetSize(1280, 100);
-	KoH.SetColor(213, 217, 153);
+	KoH.SetSize(1200, 100);
+	KoH.SetColor(144, 115, 182);
 	KoH.SetString("Here I come, King of Heroes. Do you have enough weapons in stock?");
 
 	// Main Game Loop
@@ -63,8 +66,9 @@ int main(int argc, char* argv[])
 		if (Input::Instance()->IsKeyPressed(HM_KEY_ESCAPE) == true)
 		{
 			swords.Unload();
-			fuyuki.Unload();
+			mainmenu.Unload();
 			shirou.Unload();
+			ubwshirou.Unload();
 			ubwchant.Unload();
 			chant.Unload();
 			isGameRunning = false;
@@ -134,13 +138,13 @@ int main(int argc, char* argv[])
 		{
 			//new bg
 			swords.Render(screen, 0, 0);
-			shirou.Render(screen, x, y);
-			KoH.Render(screen, 10, 10);
+			ubwshirou.Render(screen, x, y);
+			KoH.Render(screen, 20, 10);
 		}
 		else if (ubw == false)
 		{
 			//base bg
-			fuyuki.Render(screen, 0, 0);
+			mainmenu.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
 			chant.Render(screen, 10, 10);
 
