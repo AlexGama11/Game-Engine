@@ -29,6 +29,10 @@ int main(int argc, char* argv[])
 	Image ubwshirou(256, 256);
 	ubwshirou.Load("../assets/ShirouUBW.gif", screen);
 
+	//Possible enemy
+	Image ball(256, 256);
+	ball.Load("..assets/Ball.gif", screen);
+
 	Music ubwchant;
 	ubwchant.Initialize();
 	ubwchant.Load("../audio/shirouchant.mp3");

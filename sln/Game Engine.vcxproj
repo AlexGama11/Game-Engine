@@ -105,6 +105,7 @@
     <ClInclude Include="..\src\Screen.h" />
     <ClInclude Include="..\src\Text.h" />
     <ClInclude Include="..\src\Vector.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Image.cpp" />
@@ -113,6 +114,12 @@
     <ClCompile Include="..\src\Music.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
     <ClCompile Include="..\src\Text.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game Engine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\assets\ShirouIcon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
