@@ -102,13 +102,13 @@ int main(int argc, char* argv[])
 			y = 720;
 		}
 		
-		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_RETURN) == true)
 		{
 			ubw = true;
 			start = false;
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_I) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
 		{
 			start = true;
 			ubw = false;
