@@ -9,7 +9,8 @@ bool isGameRunning = true;
 int x = 640;
 int y = 360;
 bool ubw = false;
-int keypress = 0;
+bool settings = false;
+bool start = true;
 
 int main(int argc, char* argv[])
 {
@@ -18,39 +19,36 @@ int main(int argc, char* argv[])
 	screen.Initialize();
 
 	Image swords(1280, 720);
-	swords.Load("../assets/UBW.png", screen);
+	swords.Load("../assets/Ubw.png", screen);
 
 	Image mainmenu(1280, 720);
 	mainmenu.Load("../assets/BGMenu.png", screen);
 
+	Image optionsmenu(1280, 720);
+	optionsmenu.Load("../assets/OptionsMenu.png", screen);
+
 	Image shirou(256, 256);
 	shirou.Load("../assets/Shirou.gif", screen);
-
-	Image ubwshirou(256, 256);
-	ubwshirou.Load("../assets/ShirouUBW.gif", screen);
-
-	//Possible enemy
-	Image ball(256, 256);
-	ball.Load("..assets/Ball.gif", screen);
 
 	Music ubwchant;
 	ubwchant.Initialize();
 	ubwchant.Load("../audio/shirouchant.mp3");
-	ubwchant.SetVolume(0.5f);
+	ubwchant.SetVolume(0.5);
+	ubwchant.Play(Music::Loop::Ongoing);
 
-	Text chant;
-	chant.Initialize();
-	chant.Load("../fonts/SEGA_Skip-B.ttf");
-	chant.SetSize(800, 50);
-	chant.SetColor(144, 115, 182);
-	chant.SetString("Press WASD to move, and U to be the bone of your sword!");
+	Text menu;
+	menu.Initialize();
+	menu.Load("../fonts/SEGA_Skip-B.ttf");
+	menu.SetSize(1200, 100);
+	menu.SetColor(144, 115, 182);
+	menu.SetString("Press Enter to Start The Game and O to load the Options Menu");
 
-	Text KoH;
-	KoH.Initialize();
-	KoH.Load("../fonts/SEGA_Skip-B.ttf");
-	KoH.SetSize(1200, 100);
-	KoH.SetColor(144, 115, 182);
-	KoH.SetString("Here I come, King of Heroes. Do you have enough weapons in stock?");
+	Text options;
+	options.Initialize();
+	options.Load("../fonts/SEGA_Skip-B.ttf");
+	options.SetSize(1200, 100);
+	options.SetColor(144, 115, 182);
+	options.SetString("Press P to exit the options menu, and press M to mute the music");
 
 	// Main Game Loop
 	while (isGameRunning)
@@ -72,33 +70,14 @@ int main(int argc, char* argv[])
 			swords.Unload();
 			mainmenu.Unload();
 			shirou.Unload();
-			ubwshirou.Unload();
 			ubwchant.Unload();
-			chant.Unload();
+			menu.Unload();
+			optionsmenu.Unload();
 			isGameRunning = false;
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_D) == true)
-		{
-			x += 10;
-		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_A) == true)
-		{
-			x -= 10;
-		}
-
-		if (Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
-		{
-			y -= 10;
-		}
-
-		if (Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
-		{
-			y += 10;
-		}
-
-		if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
 		{
 			std::cout << "Image position is:" << x << ", " << y << std::endl;
 		}
@@ -126,40 +105,88 @@ int main(int argc, char* argv[])
 		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
 		{
 			ubw = true;
-			//music, inside parenthese is for a loop
-			ubwchant.Play(/*Music::Loop:Ongoing*/);
-			SDL_Delay(27000);
+			start = false;
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_I) == true)
 		{
-				ubw = false;
-				ubwchant.Stop();
+			start = true;
+			ubw = false;
 		}
 
+		else if (Input::Instance()->IsKeyPressed(HM_KEY_O) == true)
+		{
+			settings = true;
+			start = false;
+		}
+
+		else if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
+		{
+			start = true;
+			settings = false;
+		}
+
+		if (settings == true)
+		{
+			optionsmenu.Render(screen, 0, 0);
+			options.Render(screen, 20, 10);
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_M) == true)
+			{
+				/*ubwchant.Stop();*/
+				ubwchant.SetVolume(0.0);
+				std::cout << "Music Muted" << std::endl;
+			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_N) == true)
+			{
+				/*ubwchant.Play(Music::Loop::Ongoing);*/
+				ubwchant.SetVolume(0.5);
+				std::cout << "Music Unmuted" << std::endl;
+			}
+
+		}
 
 		if (ubw == true)
 		{
 			//new bg
 			swords.Render(screen, 0, 0);
-			ubwshirou.Render(screen, x, y);
-			KoH.Render(screen, 20, 10);
+			shirou.Render(screen, x, y);
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_D) == true)
+			{
+				x += 1;
+			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_A) == true)
+			{
+				x -= 1;
+			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
+			{
+				y -= 1;
+			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
+			{
+				y += 1;
+			}
 		}
-		else if (ubw == false)
+
+		if (start == true)
 		{
 			//base bg
 			mainmenu.Render(screen, 0, 0);
-			shirou.Render(screen, x, y);
-			chant.Render(screen, 10, 10);
-
-			// presents the screen
+			menu.Render(screen, 10, 10);
 		}
+		// presents the screen
 		screen.Present();
 	}
 
 	// Shuts down the game
 	screen.Shutdown();
 	ubwchant.Shutdown();
-	chant.Shutdown();
+	menu.Shutdown();
 	return 0;
 }

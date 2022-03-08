@@ -3,7 +3,6 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Screen.h"
-#include "Screen.h"
 
 class Image
 {
