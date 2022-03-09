@@ -11,6 +11,7 @@ int y = 360;
 bool ubw = false;
 bool settings = false;
 bool start = true;
+float v = 0.5;
 
 int main(int argc, char* argv[])
 {
@@ -33,8 +34,13 @@ int main(int argc, char* argv[])
 	Music ubwchant;
 	ubwchant.Initialize();
 	ubwchant.Load("../audio/shirouchant.mp3");
-	ubwchant.SetVolume(0.5);
+	ubwchant.SetVolume(v);
 	ubwchant.Play(Music::Loop::Ongoing);
+
+	Music button;
+	button.Initialize();
+	button.Load("../audio/Button.wav");
+	button.SetVolume(v);
 
 	Text menu;
 	menu.Initialize();
@@ -48,7 +54,7 @@ int main(int argc, char* argv[])
 	options.Load("../fonts/SEGA_Skip-B.ttf");
 	options.SetSize(1200, 100);
 	options.SetColor(144, 115, 182);
-	options.SetString("Press P to exit the options menu, and press M to mute the music");
+	options.SetString("Press P to exit the options menu and change the volume with the arrow keys or the W and S keys");
 
 	// Main Game Loop
 	while (isGameRunning)
@@ -63,6 +69,15 @@ int main(int argc, char* argv[])
 		//closes window
 		isGameRunning = !(Input::Instance()->IsWindowClosed());
 
+		if (!button.Play())
+		{
+			ubwchant.Resume();
+		}
+
+		else if (button.Play())
+		{
+			ubwchant.Pause();
+		}
 
 		//alternate way I made as a test to close the game.
 		if (Input::Instance()->IsKeyPressed(HM_KEY_ESCAPE) == true)
@@ -73,13 +88,8 @@ int main(int argc, char* argv[])
 			ubwchant.Unload();
 			menu.Unload();
 			optionsmenu.Unload();
+			button.Unload();
 			isGameRunning = false;
-		}
-
-
-		if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
-		{
-			std::cout << "Image position is:" << x << ", " << y << std::endl;
 		}
 
 		if (x > 1280)
@@ -106,43 +116,51 @@ int main(int argc, char* argv[])
 		{
 			ubw = true;
 			start = false;
+			button.Play(Music::Loop::Once);
 		}
 
 		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
 		{
 			start = true;
 			ubw = false;
+			button.Play(Music::Loop::Once);
 		}
 
 		else if (Input::Instance()->IsKeyPressed(HM_KEY_O) == true)
 		{
 			settings = true;
 			start = false;
+			button.Play(Music::Loop::Once);
 		}
 
 		else if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
 		{
 			start = true;
 			settings = false;
+			button.Play(Music::Loop::Once);
 		}
 
 		if (settings == true)
 		{
 			optionsmenu.Render(screen, 0, 0);
-			options.Render(screen, 20, 10);
+			options.Render(screen, 40,40);
 
-			if (Input::Instance()->IsKeyPressed(HM_KEY_M) == true)
+			if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
 			{
-				/*ubwchant.Stop();*/
-				ubwchant.SetVolume(0.0);
-				std::cout << "Music Muted" << std::endl;
+				v -= 0.1;
+				ubwchant.SetVolume(v);
+				button.SetVolume(v);
+				std::cout << "Music Volume:" << v <<  std::endl;
+				button.Play(Music::Loop::Once);
 			}
 
-			if (Input::Instance()->IsKeyPressed(HM_KEY_N) == true)
+			if (Input::Instance()->IsKeyPressed(HM_KEY_UP) == true || Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
 			{
-				/*ubwchant.Play(Music::Loop::Ongoing);*/
-				ubwchant.SetVolume(0.5);
-				std::cout << "Music Unmuted" << std::endl;
+				v += 0.1;
+				ubwchant.SetVolume(v);
+				button.SetVolume(v);
+				std::cout << "Music Volume:" << v << std::endl;
+				button.Play(Music::Loop::Once);
 			}
 
 		}
@@ -172,14 +190,31 @@ int main(int argc, char* argv[])
 			{
 				y += 1;
 			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
+			{
+				std::cout << "Image position is:" << x << ", " << y << std::endl;
+			}
+
 		}
 
 		if (start == true)
 		{
 			//base bg
 			mainmenu.Render(screen, 0, 0);
-			menu.Render(screen, 10, 10);
+			menu.Render(screen, 40, 40);
 		}
+
+		if (v < 0)
+		{
+			v = 0;
+		}
+
+		if (v > 1)
+		{
+			v = 1;
+		}
+
 		// presents the screen
 		screen.Present();
 	}

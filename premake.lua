@@ -15,7 +15,7 @@ workspace "Engine"
 	warnings "extra"
 
 	buildoptions {
-		"/std:c++17",
+		"/std:c++20",
 	}
 
 	syslibdirs {
