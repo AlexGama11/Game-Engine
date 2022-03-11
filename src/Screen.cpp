@@ -1,6 +1,4 @@
 #include <iostream>
-//#include<cstdlib>
-//#include <ctime>
 #include "Screen.h"
 #include <SDL_image.h>
 
@@ -62,14 +60,14 @@ bool Screen::Initialize()
 
 	if (IconVersion % 2 == 0)
 	{
-		SDL_Surface* m_icon = IMG_Load("C:/Users/ssjmi/source/repos/Game Engine/assets/ShirouIconCaladbolg.png");
+		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconCaladbolg.png");
 
 		SDL_SetWindowIcon(m_window, m_icon);
 	}
 
 	else if (IconVersion % 2 == 1)
 	{
-		SDL_Surface* m_icon = IMG_Load("C:/Users/ssjmi/source/repos/Game Engine/assets/ShirouIconExcalibur.png");
+		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconExcalibur.png");
 
 		SDL_SetWindowIcon(m_window, m_icon);
 	}

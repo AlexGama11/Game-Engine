@@ -21,22 +21,22 @@ int main(int argc, char* argv[])
 
 	if (BgAudio <= 32)
 	{
-		musicSelected = "C:/Users/ssjmi/source/repos/Game Engine/audio/pressgardenact2.mp3";
+		musicSelected = "../audio/pressgardenact2.mp3";
 	}
 
 	else if (BgAudio > 32 && BgAudio <= 64)
 	{
-		musicSelected = "C:/Users/ssjmi/source/repos/Game Engine/audio/the-hot-wind-is-blowing-extended.mp3";
+		musicSelected = "../audio/the-hot-wind-is-blowing-extended.mp3";
 	}
 
 	else if (BgAudio > 64 && BgAudio < 96)
 	{
-		musicSelected = "C:/Users/ssjmi/source/repos/Game Engine/audio/one-winged-angel-music.mp3";
+		musicSelected = "../audio/one-winged-angel-music.mp3";
 	}
 
 	else if (BgAudio >= 96)
 	{
-		musicSelected = "C:/Users/ssjmi/source/repos/Game Engine/audio/coracao-nao-tem-idade-vou-beijar.mp3";
+		musicSelected = "../audio/coracao-nao-tem-idade-vou-beijar.mp3";
 		std::cout << "Congratulations! You just got the Easter Egg Music! It's a 4% Chance!" << std::endl;
 	}
 
@@ -45,16 +45,16 @@ int main(int argc, char* argv[])
 	screen.Initialize();
 
 	Image swords(1280, 720);
-	swords.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/Ubw.png", screen);
+	swords.Load("../assets/Ubw.png", screen);
 
 	Image mainmenu(1280, 720);
-	mainmenu.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/BGMenu.png", screen);
+	mainmenu.Load("../assets/BGMenu.png", screen);
 
 	Image optionsmenu(1280, 720);
-	optionsmenu.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/OptionsMenu.png", screen);
+	optionsmenu.Load("../assets/OptionsMenu.png", screen);
 
 	Image shirou(256, 256);
-	shirou.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/Shirou.gif", screen);
+	shirou.Load("../assets/Shirou.gif", screen);
 
 	Music bgmusic;
 	bgmusic.Initialize();
@@ -64,14 +64,14 @@ int main(int argc, char* argv[])
 
 	Text menu;
 	menu.Initialize();
-	menu.Load("C:/Users/ssjmi/source/repos/Game Engine/fonts/SEGA_Skip-B.ttf");
+	menu.Load("../fonts/SEGA_Skip-B.ttf");
 	menu.SetSize(1200, 100);
 	menu.SetColor(144, 115, 182);
 	menu.SetString("Press Enter to Start The Game, and U to return from it. To access the options menu, click O");
 
 	Text options;
 	options.Initialize();
-	options.Load("C:/Users/ssjmi/source/repos/Game Engine/fonts/SEGA_Skip-B.ttf");
+	options.Load("../fonts/SEGA_Skip-B.ttf");
 	options.SetSize(1200, 100);
 	options.SetColor(144, 115, 182);
 	options.SetString("Press P to exit the options menu and change the volume with the arrow keys or the W and S keys");
