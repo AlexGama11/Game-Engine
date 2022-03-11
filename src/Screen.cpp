@@ -1,6 +1,6 @@
 #include <iostream>
-#include<cstdlib>
-#include <ctime>
+//#include<cstdlib>
+//#include <ctime>
 #include "Screen.h"
 #include <SDL_image.h>
 

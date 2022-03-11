@@ -12,6 +12,7 @@ float v = 0.5;
 
 int main(int argc, char* argv[])
 {
+
 	// initializes the screen
 	Screen screen;
 	screen.Initialize();
@@ -30,9 +31,40 @@ int main(int argc, char* argv[])
 
 	Music bgmusic;
 	bgmusic.Initialize();
-	bgmusic.Load("C:/Users/ssjmi/source/repos/Game Engine/audio/pressgardenact2.mp3");
-	bgmusic.SetVolume(v);
-	bgmusic.Play(Music::Loop::Ongoing);
+
+	srand(static_cast<unsigned int>(time(0)));
+	int BgAudio = rand() % 100 + 1;
+
+	std::cout << "The Music Number is: " << BgAudio << std::endl;
+
+	if (BgAudio <= 33)
+	{
+		bgmusic.Load(std::string("C:/Users/ssjmi/source/repos/Game Engine/audio/pressgardenact2.mp3"));
+		bgmusic.SetVolume(v);
+		bgmusic.Play(Music::Loop::Ongoing);
+	}
+
+	else if (BgAudio >= 33 && BgAudio <= 66)
+	{
+		bgmusic.Load(std::string("C:/Users/ssjmi/source/repos/Game Engine/audio/the-hot-wind-is-blowing-extended.mp3"));
+		bgmusic.SetVolume(v);
+		bgmusic.Play(Music::Loop::Ongoing);
+	}
+
+	else if (BgAudio >= 66 && BgAudio < 100)
+	{
+		bgmusic.Load(std::string("C:/Users/ssjmi/source/repos/Game Engine/audio/one-winged-angel-music.mp3"));
+		bgmusic.SetVolume(v);
+		bgmusic.Play(Music::Loop::Ongoing);
+	}
+
+	else if (BgAudio == 100)
+	{
+		bgmusic.Load(std::string("C:/Users/ssjmi/source/repos/Game Engine/audio/coracao-nao-tem-idade-vou-beijar.mp3"));
+		bgmusic.SetVolume(v);
+		bgmusic.Play(Music::Loop::Ongoing);
+		std::cout << "Congratulations! You just got the Easter Egg Music! It's a 1/100 Chance!" << std::endl;
+	}
 
 	Text menu;
 	menu.Initialize();
