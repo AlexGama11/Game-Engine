@@ -4,6 +4,8 @@ Making a Game Engine for class, gonna make a Sword-Forging game with it!
 
 In order to use the code, delete the sln folder and click on generate.bat to make your solution. It is set to vs2022, change the value according to your needs.
 
+[Itch](https://alexmango.itch.io/sdl-sword-forger) page for the Project.
+
 ## What's in this project?
 
 ← `README.md`: That's this file you're reading.
