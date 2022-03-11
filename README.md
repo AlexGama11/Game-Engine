@@ -34,4 +34,6 @@ In order to use the code, delete the sln folder and click on generate.bat to mak
 
 [Itch.io](https://alexmango.itch.io) is my itch.io profile if you want to see it, i'll post my games there.
 
-![Swords](https://i.ytimg.com/vi/tEMIyi8XzWU/maxresdefault.jpg) Hope you like my game! Feel Free to give any suggestions!.
+![Swords](https://raw.githubusercontent.com/AlexGama11/Game-Engine/master/assets/Shirou.png)
+
+Hope you like my game! Feel Free to give any suggestions!.

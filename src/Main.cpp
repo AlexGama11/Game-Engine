@@ -17,33 +17,33 @@ int main(int argc, char* argv[])
 	screen.Initialize();
 
 	Image swords(1280, 720);
-	swords.Load("../assets/Ubw.png", screen);
+	swords.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/Ubw.png", screen);
 
 	Image mainmenu(1280, 720);
-	mainmenu.Load("../assets/BGMenu.png", screen);
+	mainmenu.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/BGMenu.png", screen);
 
 	Image optionsmenu(1280, 720);
-	optionsmenu.Load("../assets/OptionsMenu.png", screen);
+	optionsmenu.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/OptionsMenu.png", screen);
 
 	Image shirou(256, 256);
-	shirou.Load("../assets/Shirou.gif", screen);
+	shirou.Load("C:/Users/ssjmi/source/repos/Game Engine/assets/Shirou.gif", screen);
 
 	Music bgmusic;
 	bgmusic.Initialize();
-	bgmusic.Load("../audio/pressgardenact2.mp3");
+	bgmusic.Load("C:/Users/ssjmi/source/repos/Game Engine/audio/pressgardenact2.mp3");
 	bgmusic.SetVolume(v);
 	bgmusic.Play(Music::Loop::Ongoing);
 
 	Text menu;
 	menu.Initialize();
-	menu.Load("../fonts/SEGA_Skip-B.ttf");
+	menu.Load("C:/Users/ssjmi/source/repos/Game Engine/fonts/SEGA_Skip-B.ttf");
 	menu.SetSize(1200, 100);
 	menu.SetColor(144, 115, 182);
-	menu.SetString("Press Enter to Start The Game and O to load the Options Menu");
+	menu.SetString("Press Enter to Start The Game, and U to return from it. To access the options menu, click O");
 
 	Text options;
 	options.Initialize();
-	options.Load("../fonts/SEGA_Skip-B.ttf");
+	options.Load("C:/Users/ssjmi/source/repos/Game Engine/fonts/SEGA_Skip-B.ttf");
 	options.SetSize(1200, 100);
 	options.SetColor(144, 115, 182);
 	options.SetString("Press P to exit the options menu and change the volume with the arrow keys or the W and S keys");

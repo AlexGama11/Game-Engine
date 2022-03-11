@@ -10,25 +10,25 @@ bool start = true;
 int Controls()
 {
 	
-	if (Input::Instance()->IsKeyPressed(HM_KEY_RETURN) == true)
+	if (Input::Instance()->IsKeyPressed(HM_KEY_RETURN) == true && settings == false)
 	{
 		ubw = true;
 		start = false;
 	}
 
-	if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
+	if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true && settings == false)
 	{
 		start = true;
 		ubw = false;
 	}
 
-	else if (Input::Instance()->IsKeyPressed(HM_KEY_O) == true)
+	else if (Input::Instance()->IsKeyPressed(HM_KEY_O) == true && ubw == false)
 	{
 		settings = true;
 		start = false;
 	}
 
-	else if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
+	else if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true && ubw == false)
 	{
 		start = true;
 		settings = false;

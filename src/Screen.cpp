@@ -46,7 +46,8 @@ bool Screen::Initialize()
 		std::cout << "Game Window could not be created!" << std::endl;
 	}
 	// makes renderer
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	// if VSYNC is added, movement should be made faster
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED /* | SDL_RENDERER_PRESENTVSYNC */ );
 
 	//if no renderer
 	if (!m_renderer)
@@ -57,18 +58,18 @@ bool Screen::Initialize()
 	srand(static_cast<unsigned int>(time(0)));
 	int IconVersion = rand() % 100 + 1;
 
-	std::cout << "The Icon Number is: " << IconVersion << std::endl;
+	//std::cout << "The Icon Number is: " << IconVersion % 2 << std::endl;
 
-	if (IconVersion <= 50)
+	if (IconVersion % 2 == 0)
 	{
-		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconCaladbolg.png");
+		SDL_Surface* m_icon = IMG_Load("C:/Users/ssjmi/source/repos/Game Engine/assets/ShirouIconCaladbolg.png");
 
 		SDL_SetWindowIcon(m_window, m_icon);
 	}
 
-	else if (IconVersion > 50)
+	else if (IconVersion % 2 == 1)
 	{
-		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconExcalibur.png");
+		SDL_Surface* m_icon = IMG_Load("C:/Users/ssjmi/source/repos/Game Engine/assets/ShirouIconExcalibur.png");
 
 		SDL_SetWindowIcon(m_window, m_icon);
 	}
