@@ -2,15 +2,12 @@
 #include "Input.h"
 #include "Screen.h"
 #include "Image.h"
-#include "Music.h" 
+#include "Music.h"
 #include "Text.h"
+#include "UBW.h"
+#include "Keys.h"
 
 bool isGameRunning = true;
-int x = 640;
-int y = 360;
-bool ubw = false;
-bool settings = false;
-bool start = true;
 float v = 0.5;
 
 int main(int argc, char* argv[])
@@ -31,16 +28,11 @@ int main(int argc, char* argv[])
 	Image shirou(256, 256);
 	shirou.Load("../assets/Shirou.gif", screen);
 
-	Music ubwchant;
-	ubwchant.Initialize();
-	ubwchant.Load("../audio/shirouchant.mp3");
-	ubwchant.SetVolume(v);
-	ubwchant.Play(Music::Loop::Ongoing);
-
-	Music button;
-	button.Initialize();
-	button.Load("../audio/Button.wav");
-	button.SetVolume(v);
+	Music bgmusic;
+	bgmusic.Initialize();
+	bgmusic.Load("../audio/pressgardenact2.mp3");
+	bgmusic.SetVolume(v);
+	bgmusic.Play(Music::Loop::Ongoing);
 
 	Text menu;
 	menu.Initialize();
@@ -69,76 +61,17 @@ int main(int argc, char* argv[])
 		//closes window
 		isGameRunning = !(Input::Instance()->IsWindowClosed());
 
-		if (!button.Play())
-		{
-			ubwchant.Resume();
-		}
-
-		else if (button.Play())
-		{
-			ubwchant.Pause();
-		}
-
 		//alternate way I made as a test to close the game.
 		if (Input::Instance()->IsKeyPressed(HM_KEY_ESCAPE) == true)
 		{
 			swords.Unload();
 			mainmenu.Unload();
 			shirou.Unload();
-			ubwchant.Unload();
 			menu.Unload();
 			optionsmenu.Unload();
-			button.Unload();
 			isGameRunning = false;
 		}
-
-		if (x > 1280)
-		{
-			x = 0;
-		}
-
-		if (x < 0)
-		{
-			x = 1280;
-		}
-
-		if (y > 720)
-		{
-			y = 0;
-		}
-
-		if (y < 0)
-		{
-			y = 720;
-		}
-		
-		if (Input::Instance()->IsKeyPressed(HM_KEY_RETURN) == true)
-		{
-			ubw = true;
-			start = false;
-			button.Play(Music::Loop::Once);
-		}
-
-		if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true)
-		{
-			start = true;
-			ubw = false;
-			button.Play(Music::Loop::Once);
-		}
-
-		else if (Input::Instance()->IsKeyPressed(HM_KEY_O) == true)
-		{
-			settings = true;
-			start = false;
-			button.Play(Music::Loop::Once);
-		}
-
-		else if (Input::Instance()->IsKeyPressed(HM_KEY_P) == true)
-		{
-			start = true;
-			settings = false;
-			button.Play(Music::Loop::Once);
-		}
+		int commands = Controls();
 
 		if (settings == true)
 		{
@@ -147,22 +80,17 @@ int main(int argc, char* argv[])
 
 			if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
 			{
-				v -= 0.1;
-				ubwchant.SetVolume(v);
-				button.SetVolume(v);
-				std::cout << "Music Volume:" << v <<  std::endl;
-				button.Play(Music::Loop::Once);
+				v -= 0.01;
+				bgmusic.SetVolume(v);
+				std::cout << "Music Volume:" << v << std::endl;
 			}
 
 			if (Input::Instance()->IsKeyPressed(HM_KEY_UP) == true || Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
 			{
-				v += 0.1;
-				ubwchant.SetVolume(v);
-				button.SetVolume(v);
+				v += 0.01;
+				bgmusic.SetVolume(v);
 				std::cout << "Music Volume:" << v << std::endl;
-				button.Play(Music::Loop::Once);
 			}
-
 		}
 
 		if (ubw == true)
@@ -171,30 +99,7 @@ int main(int argc, char* argv[])
 			swords.Render(screen, 0, 0);
 			shirou.Render(screen, x, y);
 
-			if (Input::Instance()->IsKeyPressed(HM_KEY_D) == true)
-			{
-				x += 1;
-			}
-
-			if (Input::Instance()->IsKeyPressed(HM_KEY_A) == true)
-			{
-				x -= 1;
-			}
-
-			if (Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
-			{
-				y -= 1;
-			}
-
-			if (Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
-			{
-				y += 1;
-			}
-
-			if (Input::Instance()->IsKeyPressed(HM_KEY_F) == true)
-			{
-				std::cout << "Image position is:" << x << ", " << y << std::endl;
-			}
+			int controls = UBWControls();
 
 		}
 
@@ -207,12 +112,12 @@ int main(int argc, char* argv[])
 
 		if (v < 0)
 		{
-			v = 0;
+			v = 0.0;
 		}
 
 		if (v > 1)
 		{
-			v = 1;
+			v = 1.0;
 		}
 
 		// presents the screen
@@ -221,7 +126,6 @@ int main(int argc, char* argv[])
 
 	// Shuts down the game
 	screen.Shutdown();
-	ubwchant.Shutdown();
 	menu.Shutdown();
 	return 0;
 }

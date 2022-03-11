@@ -43,10 +43,10 @@ bool Screen::Initialize()
 		std::cout << "Game Window could not be created!" << std::endl;
 	}
 	// makes renderer
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	//if no renderer
-	if (!m_window)
+	if (!m_renderer)
 	{
 		std::cout << "Renderer could not be created!" << std::endl;
 	}
