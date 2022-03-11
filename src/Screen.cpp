@@ -1,5 +1,8 @@
 #include <iostream>
+#include<cstdlib>
+#include <ctime>
 #include "Screen.h"
+#include <SDL_image.h>
 
 //constructor
 Screen::Screen()
@@ -49,6 +52,25 @@ bool Screen::Initialize()
 	if (!m_renderer)
 	{
 		std::cout << "Renderer could not be created!" << std::endl;
+	}
+
+	srand(static_cast<unsigned int>(time(0)));
+	int IconVersion = rand() % 100 + 1;
+
+	std::cout << "The Icon Number is: " << IconVersion << std::endl;
+
+	if (IconVersion <= 50)
+	{
+		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconCaladbolg.png");
+
+		SDL_SetWindowIcon(m_window, m_icon);
+	}
+
+	else if (IconVersion > 50)
+	{
+		SDL_Surface* m_icon = IMG_Load("../assets/ShirouIconExcalibur.png");
+
+		SDL_SetWindowIcon(m_window, m_icon);
 	}
 
     return false;

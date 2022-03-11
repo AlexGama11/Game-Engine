@@ -3,7 +3,6 @@
 // Used by Game Engine1.rc
 //
 #define VS_VERSION_INFO                 1
-#define IDI_ICON1                       103
 #define IDR_TOOLBAR1                    106
 #define IDB_BITMAP1                     107
 

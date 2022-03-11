@@ -109,10 +109,10 @@
   <ItemGroup>
     <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
+    <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
     <ClInclude Include="..\src\Music.h" />
     <ClInclude Include="..\src\Screen.h" />
-    <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Text.h" />
     <ClInclude Include="..\src\Ubw.h" />
     <ClInclude Include="..\src\Vector.h" />
@@ -123,10 +123,10 @@
   <ItemGroup>
     <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
+    <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Music.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
-    <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Text.cpp" />
     <ClCompile Include="..\src\Ubw.cpp" />
   </ItemGroup>

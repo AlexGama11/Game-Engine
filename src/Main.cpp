@@ -71,6 +71,7 @@ int main(int argc, char* argv[])
 			optionsmenu.Unload();
 			isGameRunning = false;
 		}
+
 		int commands = Controls();
 
 		if (settings == true)
