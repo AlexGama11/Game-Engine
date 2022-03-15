@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "Input.h"
 #include "Screen.h"
-#include "Image.h"
+#include "Texture.h"
 #include "Music.h"
 #include "Text.h"
 #include "UBW.h"
@@ -44,17 +44,25 @@ int main(int argc, char* argv[])
 	Screen screen;
 	screen.Initialize();
 
-	Image swords(1280, 720);
+	Texture swords(1280, 720);
 	swords.Load("../assets/Ubw.png", screen);
+	swords.SetSourceDimension(1, 1, 1280, 720);
 
-	Image mainmenu(1280, 720);
+	Texture mainmenu(1280, 720);
 	mainmenu.Load("../assets/BGMenu.png", screen);
+	mainmenu.SetSourceDimension(1, 1, 1280, 720);
 
-	Image optionsmenu(1280, 720);
+	Texture optionsmenu(1280, 720);
 	optionsmenu.Load("../assets/OptionsMenu.png", screen);
+	optionsmenu.SetSourceDimension(1, 1, 1280, 720);
 
-	Image shirou(256, 256);
-	shirou.Load("../assets/Shirou.gif", screen);
+	Texture shirou;
+	shirou.Load("../assets/ShirouUBW-Sheet.png", screen);
+	shirou.SetSourceDimension(5, 1, 160, 32);
+	shirou.SetTextureDimension(32, 32);
+	shirou.isAnimated(true);
+	shirou.isAnimationLooping(true);
+	shirou.SetAnimationSpeed(10.0f);
 
 	Music bgmusic;
 	bgmusic.Initialize();
@@ -126,6 +134,7 @@ int main(int argc, char* argv[])
 		{
 			//new bg
 			swords.Render(screen, 0, 0);
+			shirou.Update();
 			shirou.Render(screen, x, y);
 
 			int controls = UBWControls();

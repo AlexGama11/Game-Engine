@@ -107,13 +107,13 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
     <ClInclude Include="..\src\Music.h" />
     <ClInclude Include="..\src\Screen.h" />
     <ClInclude Include="..\src\Text.h" />
+    <ClInclude Include="..\src\Texture.h" />
     <ClInclude Include="..\src\Ubw.h" />
     <ClInclude Include="..\src\Vector.h" />
     <ClInclude Include="..\src\resource.h" />
@@ -121,20 +121,19 @@
     <ClInclude Include="..\src\resource2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Music.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
     <ClCompile Include="..\src\Text.cpp" />
+    <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\Ubw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\Game Engine1.aps" />
     <None Include="..\src\RCa02496" />
     <None Include="..\src\RCa10116" />
-    <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\src\Game Engine1.rc" />
