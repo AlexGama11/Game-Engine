@@ -47,22 +47,28 @@ int main(int argc, char* argv[])
 	Texture swords(1280, 720);
 	swords.Load("../assets/Ubw.png", screen);
 	swords.SetSourceDimension(1, 1, 1280, 720);
+	swords.SetTextureDimension(1280, 720);
+	swords.isAnimated(false);
 
 	Texture mainmenu(1280, 720);
 	mainmenu.Load("../assets/BGMenu.png", screen);
 	mainmenu.SetSourceDimension(1, 1, 1280, 720);
+	mainmenu.SetTextureDimension(1280, 720);
+	mainmenu.isAnimated(false);
 
 	Texture optionsmenu(1280, 720);
 	optionsmenu.Load("../assets/OptionsMenu.png", screen);
 	optionsmenu.SetSourceDimension(1, 1, 1280, 720);
+	optionsmenu.SetTextureDimension(1280, 720);
+	optionsmenu.isAnimated(false);
 
 	Texture shirou;
 	shirou.Load("../assets/ShirouUBW-Sheet.png", screen);
 	shirou.SetSourceDimension(5, 1, 160, 32);
-	shirou.SetTextureDimension(32, 32);
+	shirou.SetTextureDimension(64, 64);
 	shirou.isAnimated(true);
 	shirou.isAnimationLooping(true);
-	shirou.SetAnimationSpeed(10.0f);
+	shirou.SetAnimationSpeed(5.0f);
 
 	Music bgmusic;
 	bgmusic.Initialize();
@@ -104,6 +110,7 @@ int main(int argc, char* argv[])
 			mainmenu.Unload();
 			shirou.Unload();
 			menu.Unload();
+			options.Unload();
 			optionsmenu.Unload();
 			isGameRunning = false;
 		}

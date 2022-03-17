@@ -45,7 +45,7 @@ bool Screen::Initialize()
 	}
 	// makes renderer
 	// if VSYNC is added, movement should be made faster
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED  | SDL_RENDERER_PRESENTVSYNC  );
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED  /*| SDL_RENDERER_PRESENTVSYNC */ );
 
 	//if no renderer
 	if (!m_renderer)
