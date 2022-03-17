@@ -3,7 +3,7 @@
 
 Texture::Texture(int width, int height)
 {
-	m_texture = nullptr;
+	m_imgTexture = nullptr;
 	m_textureDimension.x = width;
 	m_textureDimension.y = height;
 	m_celDimension.x = 0;
@@ -32,13 +32,13 @@ bool Texture::Load(const std::string& filename, Screen& screen)
 		return false;
 	}
 
-	m_texture = SDL_CreateTextureFromSurface(screen.GetRenderer(), textureData);
+	m_imgTexture = SDL_CreateTextureFromSurface(screen.GetRenderer(), textureData);
 	return true;
 }
 
 void Texture::Unload()
 {
-	SDL_DestroyTexture(m_texture);
+	SDL_DestroyTexture(m_imgTexture);
 }
 
 void Texture::isAnimated(bool flag)
@@ -62,8 +62,8 @@ void Texture::SetSourceDimension(int columns, int rows, int width, int height)
 	m_sourceDimension.x = columns;
 	m_sourceDimension.y = rows;
 
-	m_celDimension = width / columns;
-	m_celDimension = height / rows;
+	m_celDimension.x = width / columns;
+	m_celDimension.y = height / rows;
 }
 
 void Texture::SetAnimationSpeed(float animationSpeed)
@@ -103,7 +103,7 @@ void Texture::Render(Screen& screen, int x, int y)
 		centrePoint.x = m_textureDimension.x / 2;
 		centrePoint.y = m_textureDimension.y / 2;
 
-		SDL_RenderCopyEx(screen.GetRenderer(), m_texture, &src, &dst, 0.0, &centrePoint, SDL_FLIP_NONE);
+		SDL_RenderCopyEx(screen.GetRenderer(), m_imgTexture, &src, &dst, 0.0, &centrePoint, SDL_FLIP_NONE);
 	}
 
 }
