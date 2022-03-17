@@ -8,7 +8,7 @@
 #include "Keys.h"
 
 bool isGameRunning = true;
-float v = 0.5;
+static float v = 0.5;
 std::string musicSelected;
 
 int main(int argc, char* argv[])
@@ -90,6 +90,12 @@ int main(int argc, char* argv[])
 	options.SetColor(144, 115, 182);
 	options.SetString("Press P to exit the options menu and change the volume with the arrow keys or the W and S keys");
 
+	Text volume;
+	volume.Initialize();
+	volume.Load("../fonts/SEGA_Skip-B.ttf");
+	volume.SetSize(600, 100);
+	volume.SetColor(144, 115, 182);
+
 	// Main Game Loop
 	while (isGameRunning)
 
@@ -121,10 +127,15 @@ int main(int argc, char* argv[])
 		{
 			optionsmenu.Render(screen, 0, 0);
 			options.Render(screen, 40,40);
+			std::string volumeString = std::to_string(v);
+			volume.SetString("Current Volume: " + volumeString);
+			volume.Render(screen, 40, 120);
 
 			if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
 			{
 				v -= 0.01;
+				std::string volumeString = std::to_string(v);
+				volume.SetString("Current Volume: " + volumeString);
 				bgmusic.SetVolume(v);
 				std::cout << "Music Volume:" << v << std::endl;
 			}
@@ -132,6 +143,8 @@ int main(int argc, char* argv[])
 			if (Input::Instance()->IsKeyPressed(HM_KEY_UP) == true || Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
 			{
 				v += 0.01;
+				std::string volumeString = std::to_string(v);
+				volume.SetString("Current Volume: " + volumeString);
 				bgmusic.SetVolume(v);
 				std::cout << "Music Volume:" << v << std::endl;
 			}
