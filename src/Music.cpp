@@ -42,7 +42,6 @@ void Music::Shutdown()
 Music::Music()
 {
 	m_music = nullptr;
-	m_sfx = nullptr;
 }
 
 
