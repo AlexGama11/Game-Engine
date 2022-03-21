@@ -22,13 +22,13 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -107,6 +107,7 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
@@ -121,6 +122,7 @@
     <ClInclude Include="..\src\resource2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
@@ -134,6 +136,7 @@
     <None Include="..\src\Game Engine1.aps" />
     <None Include="..\src\RCa02496" />
     <None Include="..\src\RCa10116" />
+    <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\src\Game Engine1.rc" />

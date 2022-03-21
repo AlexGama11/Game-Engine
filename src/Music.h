@@ -34,6 +34,7 @@ public:
 	void Stop();
 
 private:
+	bool m_isSFX;
 
 	//pointer to music data
 	Mix_Music* m_music;
