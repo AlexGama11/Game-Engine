@@ -105,10 +105,10 @@
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
     <ClInclude Include="..\src\Music.h" />
+    <ClInclude Include="..\src\Player.h" />
     <ClInclude Include="..\src\Screen.h" />
     <ClInclude Include="..\src\Text.h" />
     <ClInclude Include="..\src\Texture.h" />
-    <ClInclude Include="..\src\Ubw.h" />
     <ClInclude Include="..\src\Vector.h" />
   </ItemGroup>
   <ItemGroup>
@@ -118,12 +118,13 @@
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Music.cpp" />
+    <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
     <ClCompile Include="..\src\Text.cpp" />
     <ClCompile Include="..\src\Texture.cpp" />
-    <ClCompile Include="..\src\Ubw.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\src\Game Engine1.aps" />
     <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,13 +5,14 @@
 #include "Music.h"
 #include "Text.h"
 #include "Input.h"
-#include "UBW.h"
 #include "Keys.h"
+#include "Player.h"
 
 bool isGameRunning = true;
 static float v = 0.5;
 std::string musicSelected;
 std::string gamerName = "Player 1";
+Player player;
 
 
 int GameManager::Initializer()
@@ -59,13 +60,8 @@ int GameManager::Initializer()
 	m_options.SetSourceDimension(1, 1, 1280, 720);
 	m_options.SetTextureDimension(1280, 720);
 	m_options.isAnimated(false);
-
-	m_shirou.Load("../assets/ShirouUBW-Sheet.png", m_screen);
-	m_shirou.SetSourceDimension(5, 1, 160, 32);
-	m_shirou.SetTextureDimension(64, 64);
-	m_shirou.isAnimated(true);
-	m_shirou.isAnimationLooping(true);
-	m_shirou.SetAnimationSpeed(5.0f);
+	
+	player.PlayerStart(m_screen);
 
 	m_bgMusic.Initialize();
 	m_bgMusic.Load(musicSelected);
@@ -162,11 +158,9 @@ int GameManager::GameRunning()
 	{
 		//new bg
 		m_swords.Render(m_screen, 0, 0);
-		m_shirou.Update();
-		m_shirou.Render(m_screen, x, y);
-
-		int controls = UBWControls();
-
+		player.PlayerRender(m_screen);
+		player.PlayerMove();
+		
 	}
 
 	if (start == true)
@@ -196,9 +190,9 @@ int GameManager::Shutdown()
 	//alternate way I made as a test to close the game.
 	m_swords.Unload();
 	m_menu.Unload();
-	m_shirou.Unload();
 	m_startText.Unload();
 	m_optionsText.Unload();
+	player.PlayerUnload();
 	m_options.Unload();
 	m_playerName.Unload();
 	isGameRunning = false;
@@ -222,7 +216,6 @@ GameManager::~GameManager()
 {
 	m_swords.Unload();
 	m_menu.Unload();
-	m_shirou.Unload();
 	m_startText.Unload();
 	m_optionsText.Unload();
 	m_options.Unload();

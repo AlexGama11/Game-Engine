@@ -16,7 +16,6 @@ public:
 	GameManager();
 	~GameManager();
 private:
-
 	Screen m_screen;
 	Texture m_swords;
 	Texture m_menu;
