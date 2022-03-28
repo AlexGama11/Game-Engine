@@ -7,12 +7,15 @@
 #include "Input.h"
 #include "Keys.h"
 #include "Player.h"
+#include "Sound.h"
 
 bool isGameRunning = true;
-static float v = 0.5;
+bool isSoundPlayed = false;
+float v = 0.5;
 std::string musicSelected;
 std::string gamerName = "Player 1";
 Player player;
+Keys keys;
 
 
 int GameManager::Initializer()
@@ -68,6 +71,9 @@ int GameManager::Initializer()
 	m_bgMusic.SetVolume(v);
 	m_bgMusic.Play(Music::Loop::Ongoing);
 
+	m_sfx.Load("../audio/button.wav");
+	m_sfx.SetVolume(v);
+
 	m_startText.Initialize();
 	m_startText.Load("../fonts/SEGA_Skip-B.ttf");
 	m_startText.SetSize(1200, 100);
@@ -104,7 +110,7 @@ int GameManager::GameRunning()
 	////closes window
 	isGameRunning = !(Input::Instance()->IsWindowClosed());
 
-	int commands = Controls();
+	keys.Controls();
 
 	if (settings == true)
 	{
@@ -117,26 +123,33 @@ int GameManager::GameRunning()
 		m_playerName.Render(m_screen, 40, 260);
 
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true && !isSoundPlayed)
 		{
 			v -= 0.01;
 			std::string volumeString = std::to_string(v);
 			m_volumeText.SetString("Current Volume: " + volumeString);
 			m_bgMusic.SetVolume(v);
+			m_sfx.SetVolume(v);
+			m_sfx.Play();
 			std::cout << "Music Volume:" << v << std::endl;
+			isSoundPlayed = true;
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_UP) == true || Input::Instance()->IsKeyPressed(HM_KEY_W) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_UP) == true || Input::Instance()->IsKeyPressed(HM_KEY_W) == true && !isSoundPlayed)
 		{
 			v += 0.01;
 			std::string volumeString = std::to_string(v);
 			m_volumeText.SetString("Current Volume: " + volumeString);
 			m_bgMusic.SetVolume(v);
+			m_sfx.SetVolume(v);
+			m_sfx.Play();
 			std::cout << "Music Volume:" << v << std::endl;
+			isSoundPlayed = true;
 		}
 
-		if (Input::Instance()->IsKeyPressed(HM_KEY_N) == true)
+		if (Input::Instance()->IsKeyPressed(HM_KEY_N) == true && !isSoundPlayed)
 		{
+			m_sfx.Play();
 			std::cout << "What is your new name?" << std::endl;
 			std::cin >> gamerName;
 			std::cin.get();
@@ -150,9 +163,17 @@ int GameManager::GameRunning()
 
 			m_playerName.SetString("Player Name: " + gamerName);
 			m_playerName.Render(m_screen, 40, 260);
+			isSoundPlayed = true;
 		}
 	}
 
+	/*static float time = 0.0f;
+	time += 0.01;
+	if (time > 1.0f)
+	{
+		isSoundPlayed = false;
+		time = 0.0f;
+	}*/
 
 	if (ubw == true)
 	{
@@ -187,7 +208,6 @@ int GameManager::GameRunning()
 
 int GameManager::Shutdown()
 {
-	//alternate way I made as a test to close the game.
 	m_swords.Unload();
 	m_menu.Unload();
 	m_startText.Unload();
@@ -195,6 +215,7 @@ int GameManager::Shutdown()
 	player.PlayerUnload();
 	m_options.Unload();
 	m_playerName.Unload();
+	m_sfx.Unload();
 	isGameRunning = false;
 	return 2;
 }
@@ -206,10 +227,6 @@ int GameManager::Quit()
 	m_optionsText.Shutdown();
 	m_playerName.Shutdown();
 	return 3;
-}
-
-GameManager::GameManager()
-{
 }
 
 GameManager::~GameManager()

@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Music.h"
 #include "Text.h"
+#include "Sound.h"
 
 class GameManager
 {
@@ -13,7 +14,6 @@ public:
 	int Shutdown();
 	int Quit();
 
-	GameManager();
 	~GameManager();
 private:
 	Screen m_screen;
@@ -22,6 +22,7 @@ private:
 	Texture m_options;
 	Texture m_shirou;
 	Music m_bgMusic;
+	Sound m_sfx;
 	Text m_startText;
 	Text m_optionsText;
 	Text m_volumeText;
@@ -30,3 +31,5 @@ private:
 };
 
 extern bool isGameRunning;
+extern bool isSoundPlayed;
+extern float v;

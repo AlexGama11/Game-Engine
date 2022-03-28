@@ -1,14 +1,16 @@
 #pragma once
+#include "Sound.h"
 class Keys
 {
+
 public:
+	int Controls();
 
 private:
-
+	Sound m_sfx;
 
 };
 
-int Controls();
 extern bool settings;
 extern bool ubw;
 extern bool start;
