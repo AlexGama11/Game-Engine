@@ -10,10 +10,10 @@
 bool isGameRunning = true;
 static float v = 0.5;
 std::string musicSelected;
+std::string gamerName = "Player 1";
 
 int main(int argc, char* argv[])
 {
-
 	srand(static_cast<unsigned int>(time(0)));
 	int BgAudio = rand() % 100 + 1;
 
@@ -88,13 +88,19 @@ int main(int argc, char* argv[])
 	options.Load("../fonts/SEGA_Skip-B.ttf");
 	options.SetSize(1200, 100);
 	options.SetColor(144, 115, 182);
-	options.SetString("Press P to exit the options menu and change the volume with the arrow keys or the W and S keys");
+	options.SetString("Press P to exit the options menu, N to change your name, and the arrow or W and S keys to change the volume");
 
 	Text volume;
 	volume.Initialize();
 	volume.Load("../fonts/SEGA_Skip-B.ttf");
 	volume.SetSize(600, 100);
 	volume.SetColor(144, 115, 182);
+
+	Text playerName;
+	playerName.Initialize();
+	playerName.Load("../fonts/SEGA_Skip-B.ttf");
+	playerName.SetSize(600, 100);
+	playerName.SetColor(144, 115, 182);
 
 	// Main Game Loop
 	while (isGameRunning)
@@ -118,6 +124,7 @@ int main(int argc, char* argv[])
 			menu.Unload();
 			options.Unload();
 			optionsmenu.Unload();
+			playerName.Unload();
 			isGameRunning = false;
 		}
 
@@ -130,6 +137,9 @@ int main(int argc, char* argv[])
 			std::string volumeString = std::to_string(v);
 			volume.SetString("Current Volume: " + volumeString);
 			volume.Render(screen, 40, 120);
+			playerName.SetString("Player Name: " + gamerName);
+			playerName.Render(screen, 40, 260);
+
 
 			if (Input::Instance()->IsKeyPressed(HM_KEY_DOWN) == true || Input::Instance()->IsKeyPressed(HM_KEY_S) == true)
 			{
@@ -147,6 +157,23 @@ int main(int argc, char* argv[])
 				volume.SetString("Current Volume: " + volumeString);
 				bgmusic.SetVolume(v);
 				std::cout << "Music Volume:" << v << std::endl;
+			}
+
+			if (Input::Instance()->IsKeyPressed(HM_KEY_N) == true)
+			{
+				std::cout << "What is your new name?" << std::endl;
+				std::cin >> gamerName;
+				std::cin.get();
+				while (std::cin.fail())
+				{
+					std::cout << "Your name cannot be used within the game!" << std::endl;
+					std::cin.clear();
+					std::cin.ignore(256, '\n');
+					std::cin >> gamerName;
+				}
+
+				playerName.SetString("Player Name: " + gamerName);
+				playerName.Render(screen, 40, 260);
 			}
 		}
 
