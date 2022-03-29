@@ -100,7 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameManager.h" />
-    <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
@@ -114,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GameManager.cpp" />
-    <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
@@ -127,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\Game Engine1.aps" />
-    <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
