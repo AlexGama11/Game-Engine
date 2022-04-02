@@ -38,6 +38,7 @@ bool Save::LoadFile()
 		saveFile << gamerName;
 
 		// Use a while loop together with the getline() function to read the file line by line once
+		// std::getline (saveFile, fromFile)
 		while (saveFile >> fromFile && readFile >= 1) {
 			// Output the text from the file
 			std::cout << fromFile << std::endl;
