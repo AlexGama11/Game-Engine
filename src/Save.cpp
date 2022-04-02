@@ -3,14 +3,30 @@
 #include <fstream>
 #include "GameManager.h"
 
+int linenumber = 0;
 
-bool Save::SaveFile()
+bool Save::SaveFile(std::string savetext, int targetline)
 {
 	// Create and open a text file
-	std::ofstream saveFile("../saves/saveFile.txt");
+	std::fstream saveFile("../saves/saveFile.txt");
+
+	//Int to not make it loop infinitely
+	int readFile = 0;
 
 	// Write to the file
-	saveFile << gamerName;
+	saveFile << savetext;
+
+	while (linenumber < targetline && getline(saveFile, savetext) && readFile >= 1)
+	{
+		linenumber++;
+		readFile++;
+	}
+
+	if (linenumber == targetline)
+	{
+		// Output the text from the file
+		saveFile << savetext;
+	}
 
 	//closes the file
 	saveFile.close();
@@ -18,11 +34,8 @@ bool Save::SaveFile()
 	return true;
 }
 
-bool Save::LoadFile()
+bool Save::LoadFile(std::string savetext, int targetline)
 {
-	// Create a text string, which is used to output the text file
-	std::string fromFile;
-
 	//Int to not make it loop infinitely
 	int readFile = 0;
 
@@ -38,27 +51,35 @@ bool Save::LoadFile()
 		saveFile << gamerName;
 
 		// Use a while loop together with the getline() function to read the file line by line once
-		// std::getline (saveFile, fromFile)
-		while (saveFile >> fromFile && readFile >= 1) {
-			// Output the text from the file
-			std::cout << fromFile << std::endl;
-			//increment readFile
+		while (linenumber < targetline && getline(saveFile, savetext) && readFile >= 1)
+		{
+			linenumber++;
 			readFile++;
+		}
+
+		if (linenumber == targetline)
+		{
+			// Output the text from the file
+			std::cout << savetext << std::endl;
 		}
 
 		// Close the file
 		saveFile.close();
 	}
 
-	// Use a while loop together with the getline() function to read the file line by line once
-	while (saveFile >> fromFile && readFile >= 1) {
-		// Output the text from the file
-		std::cout << fromFile << std::endl;
-		//increment readFile
+	while (linenumber < targetline && getline(saveFile, savetext) && readFile >= 1)
+	{
+		linenumber++;
 		readFile++;
 	}
 
-	gamerName = fromFile;
+	if (linenumber == targetline)
+	{
+		// Output the text from the file
+		std::cout << savetext << std::endl;
+	}
+
+	gamerName = savetext;
 
 	// Close the file
 	saveFile.close();
