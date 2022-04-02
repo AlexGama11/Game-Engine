@@ -31,6 +31,10 @@
     <ClCompile Include="..\src\Texture.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Image.cpp" />
+    <ClCompile Include="..\src\Save.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Input.h">
@@ -66,9 +70,14 @@
     <ClInclude Include="..\src\Main.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Image.h" />
+    <ClInclude Include="..\src\Save.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\Game Engine1.aps" />
+    <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

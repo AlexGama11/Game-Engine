@@ -100,11 +100,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameManager.h" />
+    <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
     <ClInclude Include="..\src\Music.h" />
     <ClInclude Include="..\src\Player.h" />
+    <ClInclude Include="..\src\Save.h" />
     <ClInclude Include="..\src\Screen.h" />
     <ClInclude Include="..\src\Sound.h" />
     <ClInclude Include="..\src\Text.h" />
@@ -113,11 +115,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GameManager.cpp" />
+    <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Music.cpp" />
     <ClCompile Include="..\src\Player.cpp" />
+    <ClCompile Include="..\src\Save.cpp" />
     <ClCompile Include="..\src\Screen.cpp" />
     <ClCompile Include="..\src\Sound.cpp" />
     <ClCompile Include="..\src\Text.cpp" />
@@ -125,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\Game Engine1.aps" />
+    <None Include="..\src\icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

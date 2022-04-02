@@ -8,6 +8,7 @@
 #include "Keys.h"
 #include "Player.h"
 #include "Sound.h"
+#include "Save.h"
 
 bool isGameRunning = true;
 bool isSoundPlayed = false;
@@ -16,6 +17,7 @@ std::string musicSelected;
 std::string gamerName = "Player 1";
 Player player;
 Keys keys;
+Save save;
 
 
 int GameManager::Initializer()
@@ -119,6 +121,7 @@ int GameManager::GameRunning()
 		std::string volumeString = std::to_string(v);
 		m_volumeText.SetString("Current Volume: " + volumeString);
 		m_volumeText.Render(m_screen, 40, 120);
+		save.LoadFile();
 		m_playerName.SetString("Player Name: " + gamerName);
 		m_playerName.Render(m_screen, 40, 260);
 
@@ -161,19 +164,12 @@ int GameManager::GameRunning()
 				std::cin >> gamerName;
 			}
 
+			save.SaveFile();
 			m_playerName.SetString("Player Name: " + gamerName);
 			m_playerName.Render(m_screen, 40, 260);
 			isSoundPlayed = true;
 		}
 	}
-
-	/*static float time = 0.0f;
-	time += 0.01;
-	if (time > 1.0f)
-	{
-		isSoundPlayed = false;
-		time = 0.0f;
-	}*/
 
 	if (ubw == true)
 	{

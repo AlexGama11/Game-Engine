@@ -33,3 +33,4 @@ private:
 extern bool isGameRunning;
 extern bool isSoundPlayed;
 extern float v;
+extern std::string gamerName;
