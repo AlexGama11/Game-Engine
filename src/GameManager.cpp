@@ -19,7 +19,6 @@ Player player;
 Keys keys;
 Save save;
 
-
 int GameManager::Initializer()
 {
 	srand(static_cast<unsigned int>(time(0)));

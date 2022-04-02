@@ -15,7 +15,7 @@ bool Save::SaveFile()
 	//closes the file
 	saveFile.close();
 
-    return true;
+	return true;
 }
 
 bool Save::LoadFile()
