@@ -100,7 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameManager.h" />
-    <ClInclude Include="..\src\Image.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
@@ -115,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GameManager.cpp" />
-    <ClCompile Include="..\src\Image.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
