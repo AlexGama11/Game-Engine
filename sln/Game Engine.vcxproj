@@ -22,13 +22,13 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -100,6 +100,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameManager.h" />
+    <ClInclude Include="..\src\GuessMyNumber.h" />
     <ClInclude Include="..\src\Input.h" />
     <ClInclude Include="..\src\Keys.h" />
     <ClInclude Include="..\src\Main.h" />
@@ -114,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GameManager.cpp" />
+    <ClCompile Include="..\src\GuessMyNumber.cpp" />
     <ClCompile Include="..\src\Input.cpp" />
     <ClCompile Include="..\src\Keys.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
@@ -126,6 +128,14 @@
     <ClCompile Include="..\src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\src\.vs\ProjectSettings.json" />
+    <None Include="..\src\.vs\VSWorkspaceState.json" />
+    <None Include="..\src\.vs\slnx.sqlite" />
+    <None Include="..\src\.vs\src\FileContentIndex\6b0b8650-e71b-4218-acea-f87a5d38c18b.vsidx" />
+    <None Include="..\src\.vs\src\FileContentIndex\read.lock" />
+    <None Include="..\src\.vs\src\v17\.suo" />
+    <None Include="..\src\.vs\src\v17\Browse.VC.db" />
+    <None Include="..\src\.vs\src\v17\ipch\AutoPCH\d3a6d3e4d98f2c9a\GUESSMYNUMBER.ipch" />
     <None Include="..\src\Game Engine1.aps" />
     <None Include="..\src\icon1.ico" />
   </ItemGroup>

@@ -1,112 +1,83 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\src\GameManager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Player.cpp">
-      <Filter>Source Files\Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Main.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Input.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Screen.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Keys.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Music.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Sound.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Text.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Texture.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Save.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
+    <Filter Include=".vs">
+      <UniqueIdentifier>{3C86870B-A88F-877C-310B-9E7C9D13937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src">
+      <UniqueIdentifier>{530234F4-BFE1-B28F-C8F9-3D66345819F1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src\FileContentIndex">
+      <UniqueIdentifier>{955EDFD9-8183-2E5A-AACE-13EA96522D78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src\v17">
+      <UniqueIdentifier>{20B65E18-8C6B-D70D-1560-D1E48114CE11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src\v17\ipch">
+      <UniqueIdentifier>{338733DC-1F80-522E-48B2-37B3340A323A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src\v17\ipch\AutoPCH">
+      <UniqueIdentifier>{D6739138-C298-E0B8-EBE3-C548D767DFD6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include=".vs\src\v17\ipch\AutoPCH\d3a6d3e4d98f2c9a">
+      <UniqueIdentifier>{AD9243E1-19AD-A682-62CF-B616CE28CE89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Input.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Music.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Text.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Texture.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Sound.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Screen.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Vector.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Player.h">
-      <Filter>Header Files\Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Keys.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameManager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Main.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Save.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
+    <ClInclude Include="..\src\GameManager.h" />
+    <ClInclude Include="..\src\GuessMyNumber.h" />
+    <ClInclude Include="..\src\Input.h" />
+    <ClInclude Include="..\src\Keys.h" />
+    <ClInclude Include="..\src\Main.h" />
+    <ClInclude Include="..\src\Music.h" />
+    <ClInclude Include="..\src\Player.h" />
+    <ClInclude Include="..\src\Save.h" />
+    <ClInclude Include="..\src\Screen.h" />
+    <ClInclude Include="..\src\Sound.h" />
+    <ClInclude Include="..\src\Text.h" />
+    <ClInclude Include="..\src\Texture.h" />
+    <ClInclude Include="..\src\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\GameManager.cpp" />
+    <ClCompile Include="..\src\GuessMyNumber.cpp" />
+    <ClCompile Include="..\src\Input.cpp" />
+    <ClCompile Include="..\src\Keys.cpp" />
+    <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Music.cpp" />
+    <ClCompile Include="..\src\Player.cpp" />
+    <ClCompile Include="..\src\Save.cpp" />
+    <ClCompile Include="..\src\Screen.cpp" />
+    <ClCompile Include="..\src\Sound.cpp" />
+    <ClCompile Include="..\src\Text.cpp" />
+    <ClCompile Include="..\src\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\.vs\ProjectSettings.json">
+      <Filter>.vs</Filter>
+    </None>
+    <None Include="..\src\.vs\VSWorkspaceState.json">
+      <Filter>.vs</Filter>
+    </None>
+    <None Include="..\src\.vs\slnx.sqlite">
+      <Filter>.vs</Filter>
+    </None>
+    <None Include="..\src\.vs\src\FileContentIndex\6b0b8650-e71b-4218-acea-f87a5d38c18b.vsidx">
+      <Filter>.vs\src\FileContentIndex</Filter>
+    </None>
+    <None Include="..\src\.vs\src\FileContentIndex\read.lock">
+      <Filter>.vs\src\FileContentIndex</Filter>
+    </None>
+    <None Include="..\src\.vs\src\v17\.suo">
+      <Filter>.vs\src\v17</Filter>
+    </None>
+    <None Include="..\src\.vs\src\v17\Browse.VC.db">
+      <Filter>.vs\src\v17</Filter>
+    </None>
+    <None Include="..\src\.vs\src\v17\ipch\AutoPCH\d3a6d3e4d98f2c9a\GUESSMYNUMBER.ipch">
+      <Filter>.vs\src\v17\ipch\AutoPCH\d3a6d3e4d98f2c9a</Filter>
+    </None>
     <None Include="..\src\Game Engine1.aps" />
     <None Include="..\src\icon1.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{50b2c229-d339-4104-934f-47d49a91aceb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core">
-      <UniqueIdentifier>{e4549295-bf1c-49f8-9e94-6f0de4c9ce79}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Components">
-      <UniqueIdentifier>{069256f2-b262-47e9-9bbb-edeece9e3df3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game Objects">
-      <UniqueIdentifier>{e8a0f6e6-83dd-47ab-a8b9-2cb8fed6a2ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Managers">
-      <UniqueIdentifier>{40f27252-7098-4757-b953-18a1198af4d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4b6364d4-7f13-4faa-b1f8-081bec7bd9b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Managers">
-      <UniqueIdentifier>{fd516d9f-feef-42fe-9b7c-bc946670483a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game Objects">
-      <UniqueIdentifier>{11be7049-ae31-4fdb-a944-f79f668aa470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components">
-      <UniqueIdentifier>{785adfd6-3905-43e1-813b-c5c8c89498c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core">
-      <UniqueIdentifier>{78b0f821-b280-414e-b3dd-3787fef1184b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Sound.h"
 #include "Save.h"
+#include "GuessMyNumber.h"
 
 bool isGameRunning = true;
 bool isSoundPlayed = false;
@@ -18,9 +19,11 @@ std::string gamerName = "Player 1";
 Player player;
 Keys keys;
 Save save;
+GuessMyNumber gmn;
 
 int GameManager::Initializer()
 {
+	//get a random number
 	srand(static_cast<unsigned int>(time(0)));
 	int BgAudio = rand() % 100 + 1;
 
@@ -180,6 +183,16 @@ int GameManager::GameRunning()
 		m_swords.Render(m_screen, 0, 0);
 		player.PlayerRender(m_screen);
 		player.PlayerMove();
+		gmn.PlayGMN();
+		
+		while (!numberGuessed)
+		{
+			if (Input::Instance()->IsKeyPressed(HM_KEY_U) == true && settings == false && !isSoundPlayed)
+			{
+				std::cout << "You can't leave!" << std::endl;
+			}
+		}
+		
 		
 	}
 
