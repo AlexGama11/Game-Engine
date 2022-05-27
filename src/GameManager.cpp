@@ -111,6 +111,8 @@ int GameManager::GameRunning()
 	////closes window
 	isGameRunning = !(Input::Instance()->IsWindowClosed());
 
+	std::string savedata[100];
+
 	keys.Controls();
 
 	if (settings == true)
@@ -120,7 +122,8 @@ int GameManager::GameRunning()
 		std::string volumeString = std::to_string(v);
 		m_volumeText.SetString("Current Volume: " + volumeString);
 		m_volumeText.Render(m_screen, 40, 120);
-		save.LoadFile(gamerName, 3);
+		save.LoadFile(savedata);
+		gamerName = savedata[2];
 		m_playerName.SetString("Player Name: " + gamerName);
 		m_playerName.Render(m_screen, 40, 260);
 
@@ -163,7 +166,8 @@ int GameManager::GameRunning()
 				std::cin >> gamerName;
 			}
 
-			save.SaveFile(gamerName, 3);
+			savedata[2] = gamerName;
+			save.SaveFile(savedata);
 			m_playerName.SetString("Player Name: " + gamerName);
 			m_playerName.Render(m_screen, 40, 260);
 			isSoundPlayed = true;
